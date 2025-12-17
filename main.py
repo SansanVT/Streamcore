@@ -10,10 +10,30 @@ from connectors import kick_connector
 from processing import chat_processor, sender_processor
 from services import auth_service
 from connectors import twitch_connector
+import sys
 # Al importar esto, el servicio TTS arranca automáticamente:
 from services import tts_service 
 
 # --------------------------------
+if sys.stdout is None:
+    sys.stdout = open(os.devnull, "w")
+if sys.stderr is None:
+    sys.stderr = open(os.devnull, "w")
+    
+if getattr(sys, 'frozen', False):
+    try:
+        # Crea un archivo debug_log.txt en la misma carpeta del exe
+        application_path = os.path.dirname(sys.executable)
+        log_path = os.path.join(application_path, 'debug_log.txt')
+        
+        # Abrimos el archivo en modo escritura
+        # buffering=1 asegura que se escriba línea por línea
+        f = open(log_path, 'w', encoding='utf-8', buffering=1)
+        
+        sys.stdout = f
+        sys.stderr = f
+    except Exception as e:
+        pass
 
 # --- Define rutas ---
 script_dir = pathlib.Path(__file__).parent.resolve()

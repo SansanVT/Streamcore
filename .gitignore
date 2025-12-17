@@ -43,3 +43,6 @@ __pycache__/
 
 bin/client_secrets.json
 bin/*.exe
+
+# Como compilar
+compile.txt
