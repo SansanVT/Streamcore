@@ -25,7 +25,7 @@ Tu privacidad es prioridad. StreamCore opera **100% localmente**:
 2.  Descarga el archivo `.zip` de la última versión.
 3.  Descomprime el archivo.
 4.  Ejecuta `StreamCore.exe`.
-5.  *(Opcional)* Lee el **Manual de Usuario.pdf** incluido para aprender a configurarlo.
+5.  *(Opcional)* Lee el **Manual de Usuario** incluido para aprender a configurarlo.
 
 ## 🛠️ Instalación para Desarrolladores (Código Fuente)
 
