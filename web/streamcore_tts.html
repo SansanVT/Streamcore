@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamCore Dashboard - TTS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/streamcore_tts.css">
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/streamcore_utils.css">
+    <link rel="stylesheet" href="css/streamcore_redes.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    SC
+                </div>
+                <div class="logo-text">
+                    StreamCore
+                </div>
+            </div>
+            <nav class="nav">
+                <div class="nav-item" onclick="window.location.href='streamcore_dashboard.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                    </svg>
+                    <span class="nav-text">Dashboard</span>
+                </div>
+
+                <div class="nav-item" onclick="window.location.href='streamcore_commands.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                    </svg>
+                    <span class="nav-text">Comandos</span>
+                </div>
+
+                <div class="nav-item active" onclick="window.location.href='streamcore_tts.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z" />
+                    </svg>
+                    <span class="nav-text">TTS</span>
+                </div>
+
+                <div class="nav-item" onclick="window.location.href='streamcore_asistencia.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 011-1h6a1 1 0 110 2H8a1 1 0 01-1-1zm0 4a1 1 0 011-1h6a1 1 0 110 2H8a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="nav-text">Asistencia</span>
+                </div>
+
+                <div class="nav-item" onclick="window.location.href='streamcore_config.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" />
+                    </svg>
+                    <span class="nav-text">Configuración</span>
+                </div>
+            </nav>
+            <div class="connection-status">
+                <div class="status-dot"></div><span style="font-size: 14px; font-weight: 500;">Conectado a Twitch</span>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1 class="header-title">Text-to-Speech (TTS)</h1>
+                <div class="platform-selector flex gap-4">
+
+                    <div class="platform-btn twitch selected" data-platform="twitch">
+                        <svg class="platform-icon" viewBox="0 0 24 24">
+                            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h2.998L24 9.857V0zM2.571 18V4.286h18.857v12h-5.571L12 19.857l-3.429-3.429z" />
+                        </svg>
+                        Twitch
+                    </div>
+
+                    <div class="platform-btn youtube" data-platform="youtube">
+                        <svg class="platform-icon" viewBox="0 0 24 24">
+                            <path d="M19.615 3.184c-2.304-.25-15.93-.25-18.234 0-2.454.26-2.454 8.07-2.454 8.316 0 .245 0 8.056 2.454 8.316 2.304.25 15.93.25 18.234 0 2.454-.26 2.454-8.07 2.454-8.316 0-.245 0-8.056-2.454-8.316zM8.007 14.966V8.034l6.812 3.466z" />
+                        </svg>
+                        YouTube
+                    </div>
+
+                    <div class="platform-btn kick" data-platform="kick">
+                        <svg class="platform-icon" viewBox="0 0 24 24">
+                            <path d="M21 21H16.2L11.4 13.8L9 16.2V21H4V3H9V10.2L15.6 3H20.4L12.6 11.4L21 21Z" />
+                        </svg>
+                        Kick
+                    </div>
+
+                </div>
+            </div>
+            <div class="tts-layout">
+                <!-- Main TTS Area -->
+                <div class="tts-main">
+                    <!-- TTS Controls -->
+                    <div class="tts-controls">
+                        <div class="controls-header">
+                            <h3 class="controls-title">Control de TTS</h3>
+                            <div class="tts-status" id="ttsStatus">
+                                <div class="status-dot"></div> Activo
+                            </div>
+                        </div>
+                        <div class="control-group"><label class="control-label">Voz</label> <select class="control-select" id="voiceSelect">
+                                <option value="es-ES-Standard-A">Español (España) - Mujer</option>
+                            </select>
+                        </div>
+                        <div class="control-group"><label class="control-label">Velocidad</label>
+                            <div class="slider-container">
+                                <input type="range" class="slider" id="speedSlider" min="0.1" max="1.1" step="0.1" value="0.6">
+                                <span class="slider-value" id="speedValue">0.6x</span>
+                            </div>
+                        </div>
+                        <div class="control-buttons"><button class="btn success" id="enableTtsBtn" onclick="toggleTTS()">
+                                <svg width="16" height="16" fill="currentColor" viewbox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
+                                </svg> Activar TTS </button> <button class="btn danger" onclick="clearQueue()">
+                                <svg width="16" height="16" fill="currentColor" viewbox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2h8a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 112 0v4a1 1 0 11-2 0V9zm4 0a1 1 0 112 0v4a1 1 0 11-2 0V9z" />
+                                </svg> Limpiar Cola </button>
+                        </div>
+                    </div>
+                    <!-- TTS Queue -->
+                    <div class="tts-queue">
+                        <div class="queue-header">
+                            <h3 class="queue-title">Cola de TTS</h3>
+                            <div class="queue-count" id="queueCount">
+                                3 mensajes
+                            </div>
+                        </div>
+                        <div class="queue-list" id="queueList">
+                            <!-- Queue items will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <!-- TTS Sidebar -->
+                <div class="tts-sidebar">
+                    <!-- TTS Settings 
+                    <div class="tts-settings">
+                        <h3 class="settings-title">Configuración</h3>
+                        <div class="setting-group"><label class="setting-label">Donación Mínima</label>
+                            <div class="control-row"><input type="number" class="control-input" value="1" min="0" step="0.5" id="minDonation"> <select class="control-select" id="currency">
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="MXN">MXN</option>
+                                    <option value="ARS">ARS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="setting-group"><label class="setting-label">Límite de Caracteres</label> <input type="number" class="control-input" value="200" min="50" max="500" id="charLimit">
+                        </div>
+                        <div class="setting-group"><label class="checkbox-label"> <input type="checkbox" id="enableProfanityFilter" checked> <span class="checkbox-custom"></span> Filtro de
+                                palabras prohibidas </label> <label class="checkbox-label"> <input type="checkbox" id="enableEmoteReading"> <span class="checkbox-custom"></span> Leer nombres de
+                                emotes </label> <label class="checkbox-label"> <input type="checkbox" id="enableUrlFilter" checked> <span class="checkbox-custom"></span> Filtrar URLs
+                            </label> <label class="checkbox-label"> <input type="checkbox" id="enableSubsOnly"> <span class="checkbox-custom"></span> Solo suscriptores </label>
+                        </div>
+                    </div>-->
+                    <!-- TTS Stats 
+                    <div class="tts-stats">
+                        <h3 class="stats-title">Estadísticas</h3>
+                        <div class="stat-item"><span class="stat-label">Mensajes hoy</span> <span class="stat-value">47</span>
+                        </div>
+                        <div class="stat-item"><span class="stat-label">Total recaudado</span> <span class="stat-value">$234.50</span>
+                        </div>
+                        <div class="stat-item"><span class="stat-label">Promedio por mensaje</span> <span class="stat-value">$4.99</span>
+                        </div>
+                        <div class="stat-item"><span class="stat-label">Tiempo total</span> <span class="stat-value">12m
+                                34s</span>
+                        </div>
+                        <div class="stat-item"><span class="stat-label">En cola</span> <span class="stat-value">3</span>
+                        </div>
+                    </div>-->
+                    <!-- Test TTS -->
+                    <div class="tts-settings">
+                        <h3 class="settings-title">Comando y Permisos de Chat</h3>
+
+                        <div class="setting-group">
+                            <label class="setting-label">Comando para TTS</label>
+                            <div class="control-row">
+                                <span class="prefix-text">!</span>
+                                <input type="text" class="control-input" value="decir" id="ttsCommand" placeholder="ej: decir">
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <label class="setting-label">Permiso Mínimo</label>
+                            <select class="control-select" id="ttsPermission">
+                                <option value="all">Todos</option>
+                                <option value="subscriber">Suscriptores</option>
+                                <option value="moderator">Moderadores</option>
+                                <option value="streamer">Solo Streamer</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-group">
+                            <label class="setting-label">Palabras Prohibidas</label>
+                            <textarea class="test-input" placeholder="Palabra prohibida 1, Palabra prohibida 2"></textarea>
+                        </div>
+
+                        <!--<div class="setting-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="requireDonation">
+                                <span class="checkbox-custom"></span> Requerir **Donación** o **Puntos de Canal** para usar el comando
+                            </label>
+                        </div>-->
+
+                        <div class="control-buttons">
+                            <button class="btn primary" onclick="saveTtsCommandSettings()" style="width: 100%;">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M7 11.5a.5.5 0 01.5-.5h5a.5.5 0 010 1h-5a.5.5 0 01-.5-.5zM7 8.5a.5.5 0 01.5-.5h5a.5.5 0 010 1h-5a.5.5 0 01-.5-.5zM7 5.5a.5.5 0 01.5-.5h5a.5.5 0 010 1h-5a.5.5 0 01-.5-.5z" />
+                                    <path fill-rule="evenodd" d="M15 2H5a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2zm-1 2h-4a1 1 0 00-1 1v1a1 1 0 001 1h4a1 1 0 001-1V5a1 1 0 00-1-1zm-1 6H6v4h8v-4z" clip-rule="evenodd" />
+                                </svg> Guardar Configuración
+                            </button>
+                        </div>
+                    </div>
+                    <div class="test-tts">
+                        <h3 class="test-title">Probar TTS</h3>
+                        <textarea class="test-input" id="testMessage" placeholder="Escribe un mensaje para probar la voz...">¡Hola! Este es un mensaje de prueba para el sistema de Text-to-Speech.</textarea>
+
+                        <audio id="ttsPlayer" controls style="display: none;"></audio>
+                        <button class="btn primary" onclick="testTTS()" style="width: 100%;">
+                            <svg width="16" height="16" fill="currentColor" viewbox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
+                            </svg>
+                            Reproducir Prueba
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/streamcore_tts.js" type="text/javascript"></script>
+    <script src="js/streamcore_redes.js" type="text/javascript"></script>
+</body>
+
+</html>

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StreamCore Dashboard - Configuración</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="/css/streamcore_config.css">
+    <link rel="stylesheet" href="css/streamcore_utils.css">
+
+    <!-- SDKs (si sigues usándolos) -->
+    <script src="/_sdk/data_sdk.js" type="text/javascript" defer></script>
+    <script src="/_sdk/element_sdk.js" type="text/javascript" defer></script>
+
+    <!-- tailwind si lo necesitas (dejé la inclusión pero puedes quitarla si no la usas) -->
+    <script src="https://cdn.tailwindcss.com" type="text/javascript" defer></script>
+</head>
+
+<body>
+    <div class="dashboard-container"><!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">SC</div>
+                <div class="logo-text">StreamCore</div>
+            </div>
+
+            <nav class="nav">
+                <div class="nav-item" onclick="window.location.href='streamcore_dashboard.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                    </svg>
+                    <span class="nav-text">Dashboard</span>
+                </div>
+
+                <div class="nav-item" onclick="window.location.href='streamcore_commands.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                    </svg>
+                    <span class="nav-text">Comandos</span>
+                </div>
+
+                <div class="nav-item" onclick="window.location.href='streamcore_tts.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z" />
+                    </svg>
+                    <span class="nav-text">TTS</span>
+                </div>
+
+                <div class="nav-item" onclick="window.location.href='streamcore_asistencia.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 011-1h6a1 1 0 110 2H8a1 1 0 01-1-1zm0 4a1 1 0 011-1h6a1 1 0 110 2H8a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="nav-text">Asistencia</span>
+                </div>
+
+                <div class="nav-item active" onclick="window.location.href='streamcore_config.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" />
+                    </svg>
+                    <span class="nav-text">Configuración</span>
+                </div>
+            </nav>
+
+            <div class="connection-status">
+                <div class="status-dot"></div>
+                <span class="connection-text" style="font-size: 14px; font-weight: 500;">Conectado a Twitch</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1 class="header-title">Configuración</h1>
+                <!--<div class="platform-selector" role="tablist" aria-label="Seleccionar plataforma">
+                    <button class="platform-btn youtube" data-platform="youtube" type="button">🎬 YouTube</button>
+                    <button class="platform-btn twitch active" data-platform="twitch" type="button">🎮 Twitch</button>
+                    <button class="platform-btn kick" data-platform="kick" type="button">🟦 Kick</button>
+                </div>-->
+            </div>
+
+            <div class="config-layout">
+                <!-- Configuration Sidebar -->
+                <aside class="config-sidebar">
+                    <ul class="config-menu" role="tablist">
+                        <li class="config-menu-item active" data-section="platforms" role="tab">Plataformas</li>
+                        <!-- <li class="config-menu-item" data-section="notifications" role="tab">Notificaciones</li>-->
+                        <!-- <li class="config-menu-item" data-section="audio" role="tab">Audio &amp; TTS</li>-->
+                    </ul>
+                </aside>
+
+                <!-- Configuration Main Content -->
+                <section class="config-main">
+                    <!-- Platforms Section -->
+                    <div class="config-section active fade-in" id="platforms">
+                        <h2 class="section-title">Conexiones de Plataformas</h2>
+                        <p class="section-description">Conecta tus cuentas de streaming para sincronizar comandos, chat y eventos en tiempo real.</p>
+
+                        <div class="platform-grid">
+
+                            <!--
+                            <div class="platform-card" id="platform-card-youtube">
+                                <img src="/img/img1.jpg" alt="YouTube" class="platform-img" id="platform-img-youtube">
+                                <div class="profile-view" id="profile-view-youtube">
+                                    <img id="profile-pic-youtube" class="profile-pic" src="">
+
+                                    <span class="platform-label youtube">YouTube</span>
+
+                                    <span id="profile-name-youtube" class="profile-name"></span>
+                                    <button class="btn disconnect-btn" data-platform="youtube" type="button">Desconectar</button>
+                                </div>
+                                <button class="btn access-btn" data-platform="youtube" type="button" id="connect-btn-youtube">Acceder</button>
+                            </div>-->
+
+                            <div class="platform-card" id="platform-card-twitch">
+                                <img src="/img/img2.jpg" alt="Twitch" class="platform-img" id="platform-img-twitch">
+                                <div class="profile-view" id="profile-view-twitch">
+                                    <img id="profile-pic-twitch" class="profile-pic" src="">
+
+                                    <span class="platform-label twitch">Twitch</span>
+
+                                    <span id="profile-name-twitch" class="profile-name"></span>
+                                    <button class="btn disconnect-btn" data-platform="twitch" type="button">Desconectar</button>
+                                </div>
+                                <button class="btn access-btn" data-platform="twitch" type="button" id="connect-btn-twitch">Acceder</button>
+                            </div>
+
+                            <div class="platform-card" id="platform-card-kick">
+                                <img src="/img/img4.jpg" alt="Kick" class="platform-img" id="platform-img-kick">
+                                <div class="profile-view" id="profile-view-kick">
+                                    <img id="profile-pic-kick" class="profile-pic" src="">
+
+                                    <span class="platform-label kick">Kick</span>
+
+                                    <span id="profile-name-kick" class="profile-name"></span>
+                                    <button class="btn disconnect-btn" data-platform="kick" type="button">Desconectar</button>
+                                </div>
+                                <button class="btn access-btn" data-platform="kick" type="button" id="connect-btn-kick">Acceder</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Notifications Section
+                    <div class="config-section fade-in" id="notifications" aria-hidden="true">
+                        <h2 class="section-title">Notificaciones y Alertas</h2>
+                        <p class="section-description">Configura qué eventos quieres que generen notificaciones y cómo deben mostrarse.</p>
+
+                        <div class="config-card">
+                            <h3 class="card-title">Eventos de Chat</h3>
+                            <p class="card-description">Configura las notificaciones para eventos del chat</p>
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Nuevos mensajes
+                                    <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Menciones (@usuario)
+                                    <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Comandos ejecutados
+                                    <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="config-card">
+                            <h3 class="card-title">Eventos de Engagement</h3>
+                            <p class="card-description">Notificaciones para seguidores, suscripciones y donaciones</p>
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Nuevos seguidores
+                                    <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Suscripciones
+                                    <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Donaciones
+                                    <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Monto mínimo para alertas de donación</label>
+                                <input type="number" class="form-input" value="1" min="0" step="0.01" placeholder="0.00">
+                            </div>
+                        </div>
+
+                        <div class="config-card">
+                            <h3 class="card-title">Configuración de Sonidos</h3>
+                            <p class="card-description">Personaliza los sonidos de las notificaciones</p>
+                            <div class="form-group">
+                                <label class="form-label">Volumen General</label>
+                                <input type="range" class="form-input" min="0" max="100" value="75" style="height:8px;">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Sonido de Seguidor</label>
+                                <select class="form-select">
+                                    <option value="default">Por defecto</option>
+                                    <option value="chime">Campanita</option>
+                                    <option value="ding">Ding</option>
+                                    <option value="custom">Personalizado</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Sonido de Donación</label>
+                                <select class="form-select">
+                                    <option value="default">Por defecto</option>
+                                    <option value="coins">Monedas</option>
+                                    <option value="cash">Efectivo</option>
+                                    <option value="custom">Personalizado</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="btn-group right">
+                            <button class="btn" type="button" id="test-alerts-btn">Probar Alertas</button>
+                            <button class="btn primary" type="button" data-action="save" data-section="notifications">Guardar Cambios</button>
+                        </div>
+                    </div>-->
+
+                    <!-- Audio & TTS Section
+                    <div class="config-section fade-in" id="audio" aria-hidden="true">
+                        <h2 class="section-title">Audio y Text-to-Speech</h2>
+                        <p class="section-description">Configura las opciones de audio y síntesis de voz para tu stream.</p>
+
+                        <div class="config-card">
+                            <h3 class="card-title">Configuración de TTS</h3>
+                            <p class="card-description">Personaliza la síntesis de voz para mensajes del chat</p>
+
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Habilitar TTS
+                                    <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Voz</label>
+                                <select class="form-select">
+                                    <option value="es-ES-Standard-A">Español (España) - Femenina</option>
+                                    <option value="es-ES-Standard-B">Español (España) - Masculina</option>
+                                    <option value="es-MX-Standard-A">Español (México) - Femenina</option>
+                                    <option value="es-MX-Standard-B">Español (México) - Masculina</option>
+                                    <option value="es-AR-Standard-A">Español (Argentina) - Femenina</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Velocidad de Habla</label>
+                                <input type="range" class="form-input" min="0.5" max="2" step="0.1" value="1" style="height:8px;">
+                                <p class="form-description">Actual: 1.0x (Normal)</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Tono de Voz</label>
+                                <input type="range" class="form-input" min="-20" max="20" step="1" value="0" style="height:8px;">
+                                <p class="form-description">Actual: 0 (Neutral)</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Longitud Máxima del Mensaje</label>
+                                <input type="number" class="form-input" value="200" min="50" max="500" placeholder="200">
+                                <p class="form-description">Mensajes más largos serán truncados</p>
+                            </div>
+                        </div>
+
+                        <div class="config-card">
+                            <h3 class="card-title">Filtros de TTS</h3>
+                            <p class="card-description">Configura qué mensajes deben ser leídos por TTS</p>
+
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Solo suscriptores
+                                    <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Solo seguidores
+                                    <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+                                    Ignorar comandos
+                                    <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Palabras Prohibidas</label>
+                                <textarea class="form-textarea" placeholder="Ingresa palabras separadas por comas que no deben ser leídas por TTS..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="config-card">
+                            <h3 class="card-title">Audio del Sistema</h3>
+                            <p class="card-description">Configuración general de audio</p>
+
+                            <div class="form-group">
+                                <label class="form-label">Dispositivo de Salida</label>
+                                <select class="form-select">
+                                    <option value="default">Dispositivo por defecto</option>
+                                    <option value="speakers">Altavoces</option>
+                                    <option value="headphones">Auriculares</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Volumen Master</label>
+                                <input type="range" class="form-input" min="0" max="100" value="80" style="height:8px;">
+                            </div>
+                        </div>
+
+                        <div class="btn-group right">
+                            <button class="btn" type="button" id="test-tts-btn">Probar TTS</button>
+                            <button class="btn primary" type="button" data-action="save" data-section="audio">Guardar Cambios</button>
+                        </div>
+                    </div>-->
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JS -->
+    <script src="/js/streamcore_config.js" defer></script>
+</body>
+
+</html>

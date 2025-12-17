@@ -1,0 +1,16 @@
+pywebview
+requests
+dotenv
+kickpython
+aiohttp
+websockets
+curl_cffi
+event_bus
+dotenv
+gTTS
+pygame
+pydub
+pytchat
+google-auth-oauthlib
+google-api-python-client
+pyinstaller

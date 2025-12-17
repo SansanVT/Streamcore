@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamCore - Asistencias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/streamcore_commands.css">
+
+    <link rel="stylesheet" href="css/streamcore_interface.css">
+    <link rel="stylesheet" href="css/streamcore_utils.css">
+    <link rel="stylesheet" href="css/streamcore_redes.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="/_sdk/data_sdk.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+</head>
+
+<body class="text-white bg-[#0e0e0f]">
+    <div class="dashboard-container">
+
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">SC</div>
+                <div class="logo-text">StreamCore</div>
+            </div>
+            <nav class="nav">
+                <div class="nav-item" onclick="window.location.href='streamcore_dashboard.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                    </svg>
+                    <span class="nav-text">Dashboard</span>
+                </div>
+
+                <div class="nav-item" onclick="window.location.href='streamcore_commands.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                    </svg>
+                    <span class="nav-text">Comandos</span>
+                </div>
+
+                <div class="nav-item" onclick="window.location.href='streamcore_tts.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z" />
+                    </svg>
+                    <span class="nav-text">TTS</span>
+                </div>
+
+                <div class="nav-item active" onclick="window.location.href='streamcore_asistencia.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 011-1h6a1 1 0 110 2H8a1 1 0 01-1-1zm0 4a1 1 0 011-1h6a1 1 0 110 2H8a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="nav-text">Asistencia</span>
+                </div>
+
+                <div class="nav-item" onclick="window.location.href='streamcore_config.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" />
+                    </svg>
+                    <span class="nav-text">Configuración</span>
+                </div>
+            </nav>
+            <div class="connection-status">
+                <div class="status-dot"></div>
+                <span style="font-size: 14px; font-weight: 500;">Conectado a Twitch</span>
+            </div>
+        </div>
+
+        <div class="main-content flex-1 p-8 overflow-auto">
+
+            <div class="header mb-6">
+                <h1 class="header-title text-3xl font-bold mb-4">Gestión de Asistencia</h1>
+
+                <div class="platform-selector flex gap-4">
+
+                    <div class="platform-btn twitch selected" data-platform="twitch">
+                        <svg class="platform-icon" viewBox="0 0 24 24">
+                            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h2.998L24 9.857V0zM2.571 18V4.286h18.857v12h-5.571L12 19.857l-3.429-3.429z" />
+                        </svg>
+                        Twitch
+                    </div>
+
+                    <div class="platform-btn youtube" data-platform="youtube">
+                        <svg class="platform-icon" viewBox="0 0 24 24">
+                            <path d="M19.615 3.184c-2.304-.25-15.93-.25-18.234 0-2.454.26-2.454 8.07-2.454 8.316 0 .245 0 8.056 2.454 8.316 2.304.25 15.93.25 18.234 0 2.454-.26 2.454-8.07 2.454-8.316 0-.245 0-8.056-2.454-8.316zM8.007 14.966V8.034l6.812 3.466z" />
+                        </svg>
+                        YouTube
+                    </div>
+
+                    <div class="platform-btn kick" data-platform="kick">
+                        <svg class="platform-icon" viewBox="0 0 24 24">
+                            <path d="M21 21H16.2L11.4 13.8L9 16.2V21H4V3H9V10.2L15.6 3H20.4L12.6 11.4L21 21Z" />
+                        </svg>
+                        Kick
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="feature-card bg-[#1a1a1b] p-6 rounded-xl shadow-lg">
+
+                <h2 class="text-2xl font-semibold mb-4">📋 Lista de Asistencias</h2>
+
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <input id="buscador" type="text" placeholder="Buscar usuario..." class="flex-1 px-4 py-2 rounded-lg bg-[#222] border border-[#333] text-white" />
+
+                    <select id="ordenar" class="px-4 py-2 rounded-lg bg-[#222] border border-[#333] text-white">
+                        <option value="nombre">Ordenar por Nombre</option>
+                        <option value="asistencias">Ordenar por Asistencias</option>
+                    </select>
+
+                    <button onclick="openDataModal()" class="btn-action secondary px-4 py-2 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 ml-2" title="Gestión de Datos">
+                        💾 Datos
+                    </button>
+
+                    <button onclick="openAsistenciaModal()" class="btn-action secondary px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600 ml-2">
+                        ⚙️ Configurar
+                    </button>
+                </div>
+
+                <div class="overflow-hidden rounded-lg border border-[#2a2a2b]">
+                    <table class="w-full text-left">
+                        <thead class="bg-[#1f3d15] text-[#53fc18]">
+                            <tr>
+                                <th class="px-4 py-3">Usuario</th>
+                                <th class="px-4 py-3">Asistencias</th>
+                                <th class="px-4 py-3">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaAsistencias" class="bg-[#111]"></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Modal de datos-->
+    <div class="modal-overlay" id="asistenciaModal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Configuración de Asistencia</h2>
+                <button class="modal-close" onclick="closeAsistenciaModal()">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+                    </svg>
+                </button>
+            </div>
+
+            <form class="modal-form" id="asistenciaForm" onsubmit="guardarConfigAsistencia(event)">
+
+                <div class="form-group">
+                    <label for="cmdAsistenciaName">Comando de Activación</label>
+                    <input type="text" id="cmdAsistenciaName" placeholder="!asistencia" value="!asistencia" required>
+                    <small>El comando que los usuarios deben escribir.</small>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cmdCooldown">Cooldown (segundos)</label>
+                        <input type="number" id="cmdCooldown" value="0" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sesión Actual</label>
+                        <button type="button" class="btn danger" onclick="resetearSesionActual()" style="width: 100%; justify-content: center; height: 42px; display: flex; align-items: center; gap: 8px;">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+                            </svg>
+                            Reiniciar Lista
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #333;">
+                    <label class="checkbox-label" style="display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" id="cmdSoundEnabled" onchange="toggleSoundInput()">
+                            <span class="checkbox-custom"></span>
+                            Reproducir sonido al registrar
+                        </div>
+                    </label>
+
+                    <div id="soundConfigContainer" style="display: none; margin-top: 10px; gap: 8px;">
+                        <input type="text" id="cmdSoundFile" placeholder="Sonido por defecto (Beep)" readonly style="flex: 1; padding: 8px; background: #222; border: 1px solid #333; color: #aaa; border-radius: 4px; font-size: 12px;">
+
+                        <button type="button" class="btn secondary" onclick="seleccionarSonido()" style="padding: 8px 12px;" title="Buscar archivo...">
+                            📂
+                        </button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <label style="font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 10px; display: block;">Mensajes de Respuesta</label>
+
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <label for="msgSuccess" style="font-size: 12px; color: #4ade80; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                            ✅ Registro Exitoso
+                        </label>
+                        <input type="text" id="msgSuccess" placeholder="Ej: {user} presente!" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="msgError" style="font-size: 12px; color: #f87171; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                            ❌ Ya Registrado
+                        </label>
+                        <input type="text" id="msgError" placeholder="Ej: {user} ya te conté!" required>
+                    </div>
+                    <small style="display:block; margin-top:5px; color: #666;">Usa <b>{user}</b> para mencionar al usuario.</small>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn" onclick="closeAsistenciaModal()">Cancelar</button>
+                    <button type="submit" class="btn primary">Guardar Configuración</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="modal-overlay" id="dataModal" style="display: none;">
+        <div class="modal" style="border: 1px solid #333;">
+            <div class="modal-header" style="border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px;">
+                <h2 class="modal-title" style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 20px;">💾</span> Gestión de Datos
+                </h2>
+                <button class="modal-close" onclick="closeDataModal()">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+                <p style="color: #aaa; font-size: 14px; margin-bottom: 5px;">Plataforma Seleccionada:</p>
+                <h3 id="dataModalPlatform" style="color: white; font-size: 18px; font-weight: bold;">Twitch</h3>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn secondary" onclick="generarReporte()" style="width: 100%; margin-bottom: 15px; justify-content: center; height: 45px; border: 1px solid #4ade80; color: #4ade80; background: rgba(74, 222, 128, 0.1);">
+                    <span style="margin-right: 8px;">📄</span> Generar Reporte CSV
+                </button>
+
+                <div style="height: 1px; background: #333; margin: 15px 0;"></div>
+
+                <button type="button" class="btn danger" onclick="vaciarBaseDeDatos()" style="width: 100%; justify-content: center; height: 45px;">
+                    <span style="margin-right: 8px;">🗑️</span> Eliminar Todos los Registros
+                </button>
+                <small style="display:block; margin-top:8px; color: #666; text-align: center;">
+                    Esta acción es irreversible y solo afectará a la plataforma actual.
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/streamcore_interface.js"></script>
+    <script src="js/streamcore_asistencias.js"></script>
+    <script src="js/streamcore_redes.js" type="text/javascript"></script>
+</body>
+
+</html>

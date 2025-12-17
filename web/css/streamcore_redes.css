@@ -1,0 +1,24 @@
+/* css/streamcore_global.css */
+
+/* Animación para el mensaje de "Conectar Cuentas" */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Estilo unificado para el mensaje de "Sin Conexión" en el header */
+.no-connection-badge {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    color: #888;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}

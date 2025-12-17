@@ -1,0 +1,177 @@
+/* Agrega esto al final de css/streamcore_commands.css */
+
+/* Estilos para Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    border-bottom: 1px solid #2a2a2b;
+}
+
+td {
+    padding: 16px;
+    border-bottom: 1px solid #2a2a2b;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.platform-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.platform-badge.twitch { background: rgba(145, 70, 255, 0.2); color: #bf94ff; }
+.platform-badge.kick { background: rgba(83, 252, 24, 0.1); color: #53fc18; }
+.platform-badge.youtube { background: rgba(255, 0, 0, 0.2); color: #ff6666; }
+
+
+/* --- ESTILOS DE TABLA ASISTENCIA (Agrega esto al final de streamcore_commands.css) --- */
+
+.table-container {
+    background-color: #1a1a1b;
+    border: 1px solid #2a2a2b;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+}
+
+.custom-table thead tr {
+    background-color: rgba(83, 252, 24, 0.08); /* Fondo verde muy sutil */
+    border-bottom: 1px solid #2a2a2b;
+}
+
+.custom-table th {
+    padding: 16px 20px;
+    text-align: left;
+    color: #53fc18; /* Texto verde neon */
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.custom-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #2a2a2b;
+    color: #e4e4e7;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.custom-table tr:last-child td {
+    border-bottom: none;
+}
+
+.custom-table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Alineación a la derecha para la columna acciones */
+.text-right {
+    text-align: right;
+}
+
+/* --- Badges de Plataforma --- */
+.platform-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    gap: 6px;
+}
+
+.platform-badge.twitch {
+    background: rgba(145, 70, 255, 0.15);
+    color: #bf94ff;
+    border: 1px solid rgba(145, 70, 255, 0.3);
+}
+
+.platform-badge.kick {
+    background: rgba(83, 252, 24, 0.1);
+    color: #53fc18;
+    border: 1px solid rgba(83, 252, 24, 0.3);
+}
+
+.platform-badge.youtube {
+    background: rgba(255, 0, 0, 0.15);
+    color: #ff6666;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+/* --- Botones de Acción (Editar / Eliminar) --- */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.btn-icon {
+    background: transparent;
+    border: 1px solid #3f3f46;
+    color: #a1a1aa;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background: #27272a;
+    color: white;
+    border-color: #52525b;
+}
+
+.btn-icon.delete:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+.btn-icon.edit:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+/* Iconos de plataformas */
+.platform-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px; /* Espacio entre icono y texto */
+    fill: currentColor; /* El icono tomará el color del texto automáticamente */
+    position: relative;
+    top: -1px; /* Ajuste fino vertical */
+}
+
+/* Ajuste para que el botón use Flexbox y centre el icono */
+.platform-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* (Mantén tus otros estilos de padding, border, etc.) */
+}

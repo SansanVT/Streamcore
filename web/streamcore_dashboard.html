@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamCore Dashboard - Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/streamcore_interface.css">
+    <link rel="stylesheet" href="css/streamcore_utils.css">
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+
+    <style>
+        /* Estilos específicos para esta vista (Dashboard General) */
+        .welcome-section {
+            background: linear-gradient(145deg, rgba(30, 30, 35, 0.6) 0%, rgba(20, 20, 25, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-bg-icon {
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 150px;
+            opacity: 0.03;
+            pointer-events: none;
+            color: white;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .module-card {
+            background: rgba(30, 30, 35, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .module-card:hover {
+            transform: translateY(-2px);
+            background: rgba(40, 40, 45, 0.6);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .module-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .module-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .module-desc {
+            font-size: 14px;
+            color: #a0a0a0;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .connection-alert {
+            background: rgba(255, 87, 87, 0.1);
+            border: 1px solid rgba(255, 87, 87, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .connected-badge {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .platform-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #4a4a50;
+            /* Color apagado */
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #00ff88;
+            /* Color encendido (verde StreamCore) */
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(16px);
+        }
+
+        /* Ajuste para que el switch no interfiera con el layout */
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">SC</div>
+                <div class="logo-text">StreamCore</div>
+            </div>
+            <nav class="nav">
+                <div class="nav-item active" onclick="window.location.href='streamcore_dashboard.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                    </svg>
+                    <span class="nav-text">Dashboard</span>
+                </div>
+                <div class="nav-item" onclick="window.location.href='streamcore_commands.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                    </svg>
+                    <span class="nav-text">Comandos</span>
+                </div>
+                <div class="nav-item" onclick="window.location.href='streamcore_tts.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z" />
+                    </svg>
+                    <span class="nav-text">TTS</span>
+                </div>
+                <div class="nav-item" onclick="window.location.href='streamcore_asistencia.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 011-1h6a1 1 0 110 2H8a1 1 0 01-1-1zm0 4a1 1 0 011-1h6a1 1 0 110 2H8a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="nav-text">Asistencia</span>
+                </div>
+                <div class="nav-item" onclick="window.location.href='streamcore_config.html'">
+                    <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" />
+                    </svg>
+                    <span class="nav-text">Configuración</span>
+                </div>
+            </nav>
+            <div class="connection-status" id="sidebarStatus">
+                <div class="status-dot"></div> <span style="font-size: 14px;">Cargando...</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+
+            <div class="header">
+                <h1 class="header-title">Bienvenido a StreamCore</h1>
+                <div class="platform-area" id="topBarAccounts">
+                </div>
+            </div>
+
+            <div id="setupRequiredArea" style="display: none;">
+                <div class="connection-alert bounce-in">
+                    <div style="display:flex; align-items:center; gap:16px;">
+                        <div style="font-size:32px;">⚠️</div>
+                        <div>
+                            <h3 style="font-weight:600; font-size:16px; margin-bottom:4px;">Configuración Incompleta</h3>
+                            <p style="color:#e0e0e0; font-size:14px;">Para usar StreamCore, necesitas conectar al menos una cuenta (Twitch o Kick).</p>
+                        </div>
+                    </div>
+                    <button class="btn primary" onclick="window.location.href='streamcore_config.html'">Conectar Cuentas</button>
+                </div>
+            </div>
+
+            <div class="welcome-section fade-in">
+                <div class="welcome-bg-icon">🚀</div>
+                <h2 style="font-size:24px; font-weight:700; margin-bottom:12px;">Tu Centro de Mando</h2>
+                <p style="color:#ccc; max-width:600px; line-height:1.6;">
+                    Gestiona tu stream de forma inteligente. StreamCore unifica tu chat, lee mensajes con voz (TTS) en segundo plano y automatiza la asistencia de tus viewers.
+                </p>
+            </div>
+
+            <h2 class="section-title" style="margin-top:32px;">Módulos Disponibles</h2>
+
+            <div class="module-grid fade-in">
+
+                <div class="module-card" onclick="window.location.href='streamcore_tts.html'">
+                    <div>
+                        <div class="card-header-row">
+                            <div class="module-icon" style="margin-bottom:0;">🗣️</div>
+                            <label class="switch" onclick="event.stopPropagation()">
+                                <input type="checkbox" id="toggle-tts" onchange="toggleModule('tts_enabled', this.checked)">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="module-title">Text-to-Speech (TTS)</div>
+                        <div class="module-desc">
+                            Lectura de mensajes y donaciones con voces AI. Funciona en segundo plano.
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:flex-end;">
+                        <span style="color:#4a9eff; font-size:13px; font-weight:500;">Abrir TTS &rarr;</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="window.location.href='streamcore_commands.html'">
+                    <div>
+                        <div class="card-header-row">
+                            <div class="module-icon" style="margin-bottom:0;">⚡</div>
+                            <label class="switch" onclick="event.stopPropagation()">
+                                <input type="checkbox" id="toggle-commands" onchange="toggleModule('commands_enabled', this.checked)">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="module-title">Comandos de Chat</div>
+                        <div class="module-desc">
+                            Crea comandos personalizados (!redes, !discord) con respuestas dinámicas.
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:flex-end;">
+                        <span style="color:#4a9eff; font-size:13px; font-weight:500;">Gestionar &rarr;</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="window.location.href='streamcore_asistencia.html'">
+                    <div>
+                        <div class="card-header-row">
+                            <div class="module-icon" style="margin-bottom:0;">📋</div>
+                            <label class="switch" onclick="event.stopPropagation()">
+                                <input type="checkbox" id="toggle-attendance" onchange="toggleModule('attendance_enabled', this.checked)">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="module-title">Control de Asistencia</div>
+                        <div class="module-desc">
+                            Sistema automatizado para registrar la presencia de tus viewers (!presente).
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:flex-end;">
+                        <span style="color:#4a9eff; font-size:13px; font-weight:500;">Ver Lista &rarr;</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await checkConnections();
+        });
+
+        async function checkConnections() {
+            // Verificar si tenemos acceso a la API
+            if (!window.pywebview || !window.pywebview.api) {
+                console.warn("API pywebview no detectada (Modo diseño)");
+                return;
+            }
+
+            try {
+                // 1. Pedir estado de autenticación a la API
+                const status = await window.pywebview.api.get_all_auth_status();
+                console.log("Estado Auth:", status);
+
+                const twitch = status.twitch || {};
+                const kick = status.kick || {};
+
+                const isTwitchConnected = twitch.status === 'connected';
+                const isKickConnected = kick.status === 'connected';
+                const isAnyConnected = isTwitchConnected || isKickConnected;
+
+                // 2. Elementos del DOM
+                const topBar = document.getElementById('topBarAccounts');
+                const setupArea = document.getElementById('setupRequiredArea');
+                const sidebarStatus = document.getElementById('sidebarStatus');
+
+                // 3. Lógica Visual
+                if (!isAnyConnected) {
+                    // A) NO HAY CUENTAS CONECTADAS
+                    setupArea.style.display = 'block'; // Mostrar alerta grande
+                    topBar.innerHTML = '';
+
+                    // Sidebar rojo
+                    sidebarStatus.innerHTML = `
+                        <div class="status-dot" style="background:#ff4444;"></div>
+                        <span style="font-size: 14px; font-weight: 500;">Desconectado</span>
+                    `;
+                } else {
+                    // B) HAY AL MENOS UNA CUENTA
+                    setupArea.style.display = 'none'; // Ocultar alerta
+                    let htmlBadges = '';
+
+                    if (isTwitchConnected) {
+                        htmlBadges += `
+                            <div class="connected-badge" style="background:rgba(145,70,255,0.15); border-color:rgba(145,70,255,0.4);">
+                                <span>👾 ${escapeHtml(twitch.username)}</span>
+                            </div>
+                        `;
+                    }
+                    if (isKickConnected) {
+                        htmlBadges += `
+                            <div class="connected-badge" style="background:rgba(83, 252, 24, 0.15); border-color:rgba(83, 252, 24, 0.4);">
+                                <span>🟩 ${escapeHtml(kick.username)}</span>
+                            </div>
+                        `;
+                    }
+                    // Insertar en la esquina superior
+                    topBar.innerHTML = `<div style="display:flex; gap:10px;">${htmlBadges}</div>`;
+
+                    // Sidebar verde
+                    sidebarStatus.innerHTML = `
+                        <div class="status-dot" style="background:#00ff88; box-shadow: 0 0 10px #00ff88;"></div>
+                        <span style="font-size: 14px; font-weight: 500;">Sistema Online</span>
+                    `;
+                }
+
+            } catch (error) {
+                console.error("Error verificando conexiones:", error);
+            }
+        }
+
+        function escapeHtml(text) {
+            if (!text) return "";
+            return text.replace(/[&<>"']/g, function(m) {
+                return {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;"
+                } [m];
+            });
+        }
+
+        async function loadModuleStatus() {
+            if (!window.pywebview || !window.pywebview.api) return;
+
+            try {
+                const res = await window.pywebview.api.get_modules_status();
+                if (res.success) {
+                    const data = res.data;
+                    const ttsToggle = document.getElementById('toggle-tts');
+                    const cmdToggle = document.getElementById('toggle-commands');
+                    const attToggle = document.getElementById('toggle-attendance');
+
+                    if (ttsToggle) ttsToggle.checked = data.tts_enabled;
+                    if (cmdToggle) cmdToggle.checked = data.commands_enabled;
+                    if (attToggle) attToggle.checked = data.attendance_enabled;
+                }
+            } catch (e) {
+                console.error("Error cargando estado de módulos", e);
+            }
+        }
+
+        async function toggleModule(moduleName, isChecked) {
+            if (!window.pywebview || !window.pywebview.api) return;
+
+            console.log(`Cambiando ${moduleName} a ${isChecked}`);
+            try {
+                await window.pywebview.api.toggle_module_status(moduleName, isChecked);
+            } catch (e) {
+                console.error("Error guardando toggle", e);
+                // Revertir visualmente si falló
+                const toggle = document.getElementById(
+                    moduleName === 'tts_enabled' ? 'toggle-tts' :
+                    moduleName === 'commands_enabled' ? 'toggle-commands' : 'toggle-attendance'
+                );
+                if (toggle) toggle.checked = !isChecked;
+            }
+        }
+
+        // Agregar listener para cargar los estados cuando pywebview esté listo
+        window.addEventListener('pywebviewready', loadModuleStatus);
+    </script>
+</body>
+
+</html>

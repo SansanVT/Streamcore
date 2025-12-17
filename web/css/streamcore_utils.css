@@ -1,0 +1,39 @@
+/* --- CORRECCIÓN DE SELECTS / DROPDOWNS --- */
+
+/* Esto pinta el fondo de la lista desplegable de color oscuro */
+select option {
+    background-color: #1a1a1b; /* El mismo gris oscuro de tus tarjetas */
+    color: #ffffff;            /* Texto blanco */
+    padding: 10px;             /* Un poco de aire */
+}
+
+/* Opcional: Para asegurar que el select cerrado también se vea bien */
+select {
+    background-color: #222;
+    color: white;
+    border: 1px solid #333;
+}
+
+/* --- FORZAR SCROLLBAR OSCURO (Para Chromium/Edge) --- */
+
+/* Ancho de la barra */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* El fondo de la barra (el riel) */
+::-webkit-scrollbar-track {
+    background: #0e0e0f; /* Mismo color que tu body */
+}
+
+/* La parte que se mueve (el pulgar) */
+::-webkit-scrollbar-thumb {
+    background: #333; /* Gris oscuro */
+    border-radius: 5px;
+}
+
+/* Al pasar el mouse por encima */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Gris un poco más claro */
+}
